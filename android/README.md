@@ -1,6 +1,6 @@
 # Android prototype
 
-This is an offline, dependency-light Android implementation of the n-gram memory baseline. It has **no neural inference** and is not a validated assistant. There is no `INTERNET` permission. The user can enter text, generate a deterministic continuation, import a selected text document (up to 1 MiB), inspect memory size, and delete all learned memory.
+This is an offline, dependency-light Android implementation of the n-gram memory baseline. It has **no neural inference** and is not a validated assistant. There is no `INTERNET` permission. The user can enter text, generate a deterministic continuation, import a selected text document (up to 1 MiB), inspect memory size, and delete all learned memory. The debug build and Java tokenizer tests pass in GitHub CI; an emulator or physical-device run has not yet been recorded.
 
 ## Reference target
 

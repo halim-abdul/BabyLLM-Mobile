@@ -14,7 +14,7 @@ The original project vision is an on-device assistant that adapts to user-approv
 | GRU with causal attention | Experimental | Optional PyTorch model and one-step training test |
 | Adaptive embeddings | Planned | No adaptation algorithm or benchmark yet |
 | Cross-language assistance | Planned | Unicode tokenization works, but multilingual quality is unmeasured |
-| Android, offline n-gram prototype | Implemented; build/device validation pending | Local text entry, document picker, memory deletion; no network permission |
+| Android, offline n-gram prototype | Build verified in CI; device validation pending | Local text entry, document picker, memory deletion; no network permission |
 | Android neural deployment | Planned | No model export, neural runtime, latency, or battery measurements yet |
 | Automatic web learning | Planned | No crawler or background browsing; only explicitly supplied local HTML |
 
