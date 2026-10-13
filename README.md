@@ -1,6 +1,6 @@
 # BabyLLM-Mobile
 
-**A small, inspectable starting point for research on incremental language memory.** The current repository provides a working Python n-gram baseline, local document ingestion, a reproducible evaluation helper, and an optional PyTorch GRU with causal attention. **It is not yet an Android app, a pretrained assistant, or a demonstrated research result.**
+**A small, inspectable starting point for research on incremental language memory.** The repository provides a Python n-gram baseline, local document ingestion, a reproducible evaluation helper, an offline Android n-gram prototype, and an optional PyTorch GRU with causal attention. **It is not a pretrained assistant or a demonstrated research result.**
 
 The original project vision is an on-device assistant that adapts to user-approved chats and documents, combines symbolic memory with a compact neural model, and works across languages. This repository now separates that vision from what can be run and measured today.
 
@@ -14,7 +14,8 @@ The original project vision is an on-device assistant that adapts to user-approv
 | GRU with causal attention | Experimental | Optional PyTorch model and one-step training test |
 | Adaptive embeddings | Planned | No adaptation algorithm or benchmark yet |
 | Cross-language assistance | Planned | Unicode tokenization works, but multilingual quality is unmeasured |
-| Android, offline deployment | Planned | No Android client, model export, latency, or battery measurements yet |
+| Android, offline n-gram prototype | Implemented; build/device validation pending | Local text entry, document picker, memory deletion; no network permission |
+| Android neural deployment | Planned | No model export, neural runtime, latency, or battery measurements yet |
 | Automatic web learning | Planned | No crawler or background browsing; only explicitly supplied local HTML |
 
 ## Quick start
@@ -60,11 +61,11 @@ To make performance claims, freeze a dataset and license, deduplicate documents 
 
 The current `evaluate_next_token` helper reports top-1 accuracy and coverage. It does **not** create a split or prevent leakage; callers must supply genuinely held-out texts. No benchmark scores are claimed in this repository.
 
-See [research plan](docs/RESEARCH_PLAN.md) for the experiment matrix and release criteria.
+See the [research plan](docs/RESEARCH_PLAN.md) for the experiment matrix and release criteria. The first public benchmark uses [WikiText-2 raw](docs/DATASETS.md); the 200/100-row default run is a pipeline check, not a research result.
 
 ## Privacy and limitations
 
-The SQLite file contains text-derived token counts and may reveal sensitive content. Keep it private, delete it when no longer needed, and do not ingest material without permission. Content-hash deduplication is not a privacy guarantee. The prototype lacks per-document unlearning, encryption, consent UI, safety filtering, retrieval citations, and an Android integration. Do not use its generated text for consequential decisions.
+The SQLite file contains text-derived token counts and may reveal sensitive content. Keep it private, delete it when no longer needed, and do not ingest material without permission. Content-hash deduplication is not a privacy guarantee. The Android prototype has a clear-all control but lacks per-document unlearning, encryption, safety filtering, retrieval citations, and neural inference. Do not use its generated text for consequential decisions.
 
 ## Repository layout
 
@@ -73,6 +74,8 @@ src/babyllm/       local baseline, ingestion, evaluation, neural experiment
 tests/             functional and causal-attention tests
 docs/              research protocol and implementation roadmap
 notebooks/         small reproducible examples
+android/           offline Android n-gram prototype and reference target
+scripts/           pinned public-data benchmark
 .github/workflows/ CI for the dependency-light baseline
 ```
 
